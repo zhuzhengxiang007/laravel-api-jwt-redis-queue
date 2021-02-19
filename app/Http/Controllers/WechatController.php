@@ -25,8 +25,6 @@ class WechatController extends Controller
         $message = [$txt,$vid,$vname,$openid,$appid,$nickname,$token];
         //接收到的客户信息需要存入数据库，这边交给redis队列处理，这里主要处理用户发来的信息如何应答
         Redis::publish('wechat-channel',implode("|",$message));
-
-
         return response()->json(['txt' => $txt]);
     }
 }

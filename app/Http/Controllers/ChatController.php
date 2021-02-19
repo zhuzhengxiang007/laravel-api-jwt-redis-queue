@@ -5,9 +5,22 @@ namespace App\Http\Controllers;
 use App\Jobs\wechats;
 use App\Wechat;
 use Illuminate\Http\Request;
+use App\Repositories\Interfaces\ChatRepositoryInterface;
 
 class ChatController extends Controller
 {
+    private $chatRepository;
+
+    public function __construct(ChatRepositoryInterface $chatRepository)
+    {
+        $this->chatRepository = $chatRepository;
+    }
+
+    public function index($id)
+    {
+        return response()->json(['result' => $this->chatRepository->getById($id)]);
+    }
+
     /**
      * redis异步消息队列处理客户聊天数据
      * @param Request $request

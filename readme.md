@@ -1,5 +1,7 @@
 启动
 php artisan serve --port=80
+清除缓存
+php artisan config:clear
 
 redis启动：
 cd /usr/local/redis-6.0.8/src
@@ -99,6 +101,8 @@ php artisan make:job wechats
 php artisan queue:work —-queue=wechats
 php artisan queue:work --daemon //守护所有进程
 
+异步消息队列 postman并发测试没有丢失数据
+
 公共函数放到哪里
 1）可以在app/composer.json中找到autoload项，在里面添加如下内容：
     "files":[
@@ -108,6 +112,12 @@ php artisan queue:work --daemon //守护所有进程
 3）写自己常用的函数
 4）在项目目录下执行composer dump-auto
 以后就可以直接在项目中使用这些已经定义好的函数。
+
+laravel Repository模式
+https://www.php.cn/phpkj/laravel/459178.html
+Repository->数据层的抽象
+App\Repositories 仓储目录
+
 
 
 

@@ -37,3 +37,9 @@ Route::post('chat','WechatController@store');
 
 //redis异步消息队列处理客户聊天数据
 Route::post('chats', 'ChatController@store');
+
+//Repository测试
+Route::get('chats/{id}', 'ChatController@index');
+
+//获取微信公众号客户填写表单数据
+Route::any('pform', 'CustomerformController@store');
